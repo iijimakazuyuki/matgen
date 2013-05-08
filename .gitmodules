@@ -1,0 +1,3 @@
+[submodule "spmat"]
+	path = spmat
+	url = git://github.com/iijimakazuyuki/spmat.git
