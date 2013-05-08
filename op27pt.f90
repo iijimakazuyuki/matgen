@@ -4,13 +4,14 @@ module op27pt_mod
 	public op27pt
 	private map, produce, bounded
 contains
-	subroutine op27pt()
+	subroutine op27pt(n)
+		integer, intent(in) :: n
+		
 		type(matcrs) :: a
 		double precision, allocatable, target :: e(:)
 		integer, allocatable, target :: idx(:), col(:)
-		integer :: i, j, k, l, m, n, d(3)
+		integer :: i, j, k, d(3)
 		d = (/-1, 0, 1/)
-		read *, n
 		a%n = n*n*n
 		!ì‡ïîÅA6ñ ÅA12ï”ÅA8äp
 		a%m = 27*(n*n*n - 6*n*n + 12*n - 8) + 18*(6*n*n - 2*12*n + 3*8) + 12*(12*n - 3*8) + 8*8

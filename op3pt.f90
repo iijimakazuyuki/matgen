@@ -4,13 +4,14 @@ module op3pt_mod
 	public op3pt
 	private produce, bounded
 contains
-	subroutine op3pt()
+	subroutine op3pt(n)
+		integer, intent(in) :: n
+		
 		type(matcrs) :: a
 		double precision, allocatable, target :: e(:)
 		integer, allocatable, target :: idx(:), col(:)
-		integer :: i, n, d(3)
+		integer :: i, d(3)
 		d = (/-1, 0, 1/)
-		read *, n
 		a%n = n
 		a%m = 3*(n-2) + 2*2
 		call init_matcrs(a, e, idx, col)

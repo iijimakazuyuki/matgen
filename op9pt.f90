@@ -4,13 +4,14 @@ module op9pt_mod
 	public op9pt
 	private map, produce, bounded
 contains
-	subroutine op9pt()
+	subroutine op9pt(n)
+		integer, intent(in) :: n
+		
 		type(matcrs) :: a
 		double precision, allocatable, target :: e(:)
 		integer, allocatable, target :: idx(:), col(:)
-		integer :: i, j, k, l, n, d(3)
+		integer :: i, j, d(3)
 		d = (/-1, 0, 1/)
-		read *, n
 		a%n = n*n
 		!“à•”A4•ÓA4‹÷
 		a%m = 9*(n*n - 4*n + 4) + 6*(4*n - 2*4) + 4*4
