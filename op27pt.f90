@@ -1,5 +1,5 @@
 module op27pt_mod
-	use mat_mod
+	use matcrs_mod
 	implicit none
 	public op27pt
 	private map, produce, bounded
@@ -15,7 +15,7 @@ contains
 		a%n = n*n*n
 		!ì‡ïîÅA6ñ ÅA12ï”ÅA8äp
 		a%m = 27*(n*n*n - 6*n*n + 12*n - 8) + 18*(6*n*n - 2*12*n + 3*8) + 12*(12*n - 3*8) + 8*8
-		call init_matcrs(a, e, idx, col)
+		call init_matcrs(a)
 		a%e = 1
 		do i=1, n
 			do j=1, n

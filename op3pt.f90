@@ -1,5 +1,5 @@
 module op3pt_mod
-	use mat_mod
+	use matcrs_mod
 	implicit none
 	public op3pt
 	private produce, bounded
@@ -8,13 +8,13 @@ contains
 		integer, intent(in) :: n
 		
 		type(matcrs) :: a
-		double precision, allocatable, target :: e(:)
-		integer, allocatable, target :: idx(:), col(:)
+		double precision, allocatable :: e(:)
+		integer, allocatable :: idx(:), col(:)
 		integer :: i, d(3)
 		d = (/-1, 0, 1/)
 		a%n = n
 		a%m = 3*(n-2) + 2*2
-		call init_matcrs(a, e, idx, col)
+		call init_matcrs(a)
 		a%e = 1
 		do i=1, n
 			call produce(i, n, d, a%idx, a%col)

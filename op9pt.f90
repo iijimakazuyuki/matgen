@@ -1,5 +1,5 @@
 module op9pt_mod
-	use mat_mod
+	use matcrs_mod
 	implicit none
 	public op9pt
 	private map, produce, bounded
@@ -8,14 +8,14 @@ contains
 		integer, intent(in) :: n
 		
 		type(matcrs) :: a
-		double precision, allocatable, target :: e(:)
-		integer, allocatable, target :: idx(:), col(:)
+		double precision, allocatable :: e(:)
+		integer, allocatable :: idx(:), col(:)
 		integer :: i, j, d(3)
 		d = (/-1, 0, 1/)
 		a%n = n*n
 		!ì‡ïîÅA4ï”ÅA4ã˜
 		a%m = 9*(n*n - 4*n + 4) + 6*(4*n - 2*4) + 4*4
-		call init_matcrs(a, e, idx, col)
+		call init_matcrs(a)
 		a%e = 1
 		do i=1, n
 			do j=1, n
