@@ -9,18 +9,19 @@ contains
 		
 		type(matcrs) :: a
 		double precision, allocatable, target :: e(:)
-		integer, allocatable, target :: idx(:), col(:)
+		integer, allocatable, target :: row(:), col(:)
 		integer :: i, j, k, d(3)
 		d = (/-1, 0, 1/)
 		a%n = n*n*n
+		a%m = n*n*n
 		!ì‡ïîÅA6ñ ÅA12ï”ÅA8äp
-		a%m = 27*(n*n*n - 6*n*n + 12*n - 8) + 18*(6*n*n - 2*12*n + 3*8) + 12*(12*n - 3*8) + 8*8
+		a%k = 27*(n*n*n - 6*n*n + 12*n - 8) + 18*(6*n*n - 2*12*n + 3*8) + 12*(12*n - 3*8) + 8*8
 		call init_matcrs(a)
 		a%e = 1
 		do i=1, n
 			do j=1, n
 				do k=1, n
-					call produce(i, j, k, n, d, a%idx, a%col)
+					call produce(i, j, k, n, d, a%row, a%col)
 				end do
 			end do
 		end do
@@ -30,12 +31,12 @@ contains
 		integer, intent(in) :: i, j, k, n
 		map = (i-1)*n*n + (j-1)*n + k
 	end function
-	subroutine produce(i, j, k, n, d, idx, col)
+	subroutine produce(i, j, k, n, d, row, col)
 		integer, intent(in) :: i, j, k, n, d(:)
-		integer, intent(out) :: idx(0:), col(:)
+		integer, intent(out) :: row(0:), col(:)
 		integer :: ii, jj, kk, nn, cc
 		nn = map(i, j, k, n)
-		cc = idx(nn-1)
+		cc = row(nn-1)
 		do ii=1, size(d)
 			do jj=1, size(d)
 				do kk=1, size(d)
@@ -46,7 +47,7 @@ contains
 				end do
 			end do
 		end do
-		idx(nn) = cc
+		row(nn) = cc
 	end subroutine
 	logical function bounded(i, j, k, n) result(a)
 		integer, intent(in) :: i, j, k, n
