@@ -8,13 +8,13 @@ contains
 		integer, intent(in) :: n
 		
 		type(matcrs) :: a
-		double precision, allocatable, target :: e(:)
-		integer, allocatable, target :: row(:), col(:)
+		double precision, allocatable :: e(:)
+		integer, allocatable :: row(:), col(:)
 		integer :: i, j, k, d(3)
 		d = (/-1, 0, 1/)
 		a%n = n*n*n
 		a%m = n*n*n
-		!“à•”A6–ÊA12•ÓA8Šp
+		!å†…éƒ¨ã€6é¢ã€12è¾ºã€8è§’
 		a%k = 27*(n*n*n - 6*n*n + 12*n - 8) + 18*(6*n*n - 2*12*n + 3*8) + 12*(12*n - 3*8) + 8*8
 		call init_matcrs(a)
 		a%e = 1

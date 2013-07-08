@@ -14,7 +14,7 @@ contains
 		d = (/-1, 0, 1/)
 		a%n = n*n
 		a%m = n*n
-		!“à•”A4•ÓA4‹÷
+		!å†…éƒ¨ã€4è¾ºã€4éš…
 		a%k = 9*(n*n - 4*n + 4) + 6*(4*n - 2*4) + 4*4
 		call init_matcrs(a)
 		a%e = 1
